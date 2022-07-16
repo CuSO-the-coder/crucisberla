@@ -1,2 +1,2 @@
 # crucisberla
-Un cruciverba scritto in python, giicabile tramite terminale
+Un cruciverba scritto in python, giocabile tramite terminale
