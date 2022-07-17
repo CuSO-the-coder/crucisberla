@@ -4,37 +4,54 @@ from unicodedata import name
 from reader import feed
 
 cruciverba = [
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
+    " ",    " ",    " ",    " ",    " ",    " ",    " ",    " ",    " ",    " ",    "#",  " ", 
+    " ",    " ",    " ",    "#",   " ",    " ",    " ",    " ",    "#",   " ",    " ",   " ", 
+    " ",    "#",   " ",    " ",    "#",   " ",    " ",    " ",    " ",    "#",   " ",   " ", 
+    " ",    " ",    " ",    " ",    " ",    " ",    "#",   "#",   " ",    " ",    " ",   " ", 
+    " ",    " ",    " ",    "#",   " ",    "#",   " ",    " ",    " ",    " ",    " ",   " ", 
 ]
 crucicorretto = [
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-    " ", " ", " ", " ", " ", " ", " ", " ",
-]
-maxline = 8
-maxcells = 64
+    "C",    "R",    "U",   "C",    "I",    "V",    "E",     "R",    "B",    "A",     "#",    "U",
+    "A",    "O",    "T",   "#",    "P",   "O",    "C",    "A",    "#",    "H",    "A",    "N",
+    "S",    "#",    "I",    "N",    "#",   "M" ,   "O",   "M",   "A",    "#",     "R",     "I",
+    "C",    "A",    "L",   "A",    "T",    "O",    "#",    "#",    "P",    "O",    "C",    "O",
+    "O",    "R",    "E",   "#",   "O",    "#",    "P" ,    "Y",    "T",    "H",    "O",    "N"   
+    ]
 
-definizioniv = {"1)":   "ciao",
-                "2)":   "ciao2",
-                }
+maxline = 12
+maxcells = 60
 
-definizionio = {"4)":   "ciao4",
-                "5)":   "ciao5",
-                }
+definizioniV = {
+                            "0)"    :   "Si mette in moto (ma non a Napoli)",
+                            "1)"    :   "Sigla di Rovigo",
+                            "2)"    :   "Qualcosa che serve",
+                            "4)"    :   "192.168.1.120",
+                            "5)"    :   "Isola delle Fiji",
+                            "6)"    :   "Rimbomba nelle grotte",
+                            "7)"    :   "Random Access Memory",
+                            "9)"    :   "Preposizione inglese",
+                            "11)"  :   "Unione in inglese",
+                            "22)"  :   "Può essere a tutto sesto",
+                            "27)"  :   "Sodio", 
+                            "32)"  :   "Azienda  Provinciale Trasporti",
+                            "37)"  :   "Gas nobile del 3° periodo",
+                            "40)"  :   "Sigla di Torino",
+                            "45)"  :   "Esclamazione di stupore"
+}
+
+definizioniO = {
+                            "0)"    :   "Lo stai facendo ora",
+                            "12)"  :   "Attack On Titan",
+                            "16)"  :   "Il contrario di 'tanta'",
+                            "21)"  :   "Sin/Cos",
+                            "26)"  :   "Di, A, Da, {...}, Con, Su, Per, Tra, Fra",
+                            "29)"  :   "Museum of Modern Art",
+                            "34)"  :   "Rio senza 'o'",
+                            "36)"  :   "Il contrario di 'elevare'",
+                            "44)"  :   "Se non è tanto è {...}",
+                            "48)"  :   "Le segna l'orologio",
+                            "55)"  :   "Il 'serpentese' per i programmatori"
+}
 
 tentativi = 0
 tic = time.perf_counter()
@@ -53,21 +70,21 @@ def view():
             print("|", end="")
         print("\n")
 
-    print("\n\n")
+    print("\n")
 
     print("VERTICALI")
-    for ele in definizioniv:
+    for ele in definizioniV:
         print(ele, end="\t")
-        print(definizioniv[ele])
+        print(definizioniV[ele])
 
-    print("\n\n")
+    print("\n")
 
     print("ORIZZONTALI")
-    for ele in definizionio:
+    for ele in definizioniO:
         print(ele, end="\t")
-        print(definizionio[ele])
+        print(definizioniO[ele])
 
-    print("\n\n")
+    print("\n")
 
 #----------------------------------------------------------------------#
 
@@ -77,12 +94,12 @@ def askO(n):
     c = 0
 
     for i in range(n, maxcells+1):
-        if cruciverba[i] == "*":
+        if cruciverba[i] == "#":
             c = i-n
         else:
             c = (((n//maxline)+1)*maxline)-n
 
-    print(f"Lunghezza della parola {c}caratteri")
+    print(f"Lunghezza della parola {c} caratteri")
 
     p = input("inserisci la parola:\n")
 
@@ -93,6 +110,7 @@ def askO(n):
         print("Parola troppo lunga :/")
         askO(n)
     else:
+        p=p.upper()
         for i in range(len(p)):
             cruciverba[n+i] = p[i]
 
@@ -106,7 +124,7 @@ def askV(n):
     else:
         c = 0
     for i in range(n, maxcells+1, maxline):
-        if cruciverba[i] == "*":
+        if cruciverba[i] == "#":
             break
         else:
             c += 1
@@ -122,6 +140,7 @@ def askV(n):
         print("Parola troppo lunga :/")
         askV(n)
     else:
+        p=p.upper()
         for i in range(len(p)):
             cruciverba[n+i*maxline] = p[i]
 
