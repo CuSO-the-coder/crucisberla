@@ -192,12 +192,12 @@ def askO(n):
 
 def askV(n):
 
-    if n % maxline == 0:
+    if n % maxline == 0 and n!=0:
         c = -1
     else:
         c = 0
 
-    for i in range(n, maxcells+1, maxline):
+    for i in range(n, maxcells, maxline):
         if cruciverba[i] == "#":
             break
         else:
