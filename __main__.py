@@ -113,13 +113,13 @@ def askTuto():
             print("\n")
         
         print("Le caselle vuote le dovrai riempire con delle parole in base alla definizione corrispondente, gli # sono caselle annerite, quindi non potrai modificarli.")
-        time.sleep(4)
+        time.sleep(6)
         
         print("Ti verrà chiesto il numero della casella/definizione e il verso in cui inserire la parola (veritcale o orizzontale).")
-        time.sleep(2)
+        time.sleep(4)
 
         print("E questo è quanto, divertiti!")
-        time.sleep(2)
+        time.sleep(2.4)
         
         game()
 
