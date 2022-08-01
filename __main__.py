@@ -22,7 +22,7 @@ maxline = 12
 maxcells = 60
 
 definizioniV = {
-    "0)":   "Si mette in moto (ma non a Napoli)",
+    "0)":   "Si indossa in moto (ma non a Napoli)",
     "1)":   "Sigla di Rovigo",
     "2)":   "Qualcosa che serve",
     "4)":   "192.168.1.120",
