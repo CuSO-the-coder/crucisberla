@@ -1,7 +1,5 @@
 import os
 import time
-from unicodedata import name
-from reader import feed
 
 cruciverba = [
     " ",    " ",    " ",    " ",    " ",    " ",    " ",    " ",    " ",    " ",    "#",  " ",
